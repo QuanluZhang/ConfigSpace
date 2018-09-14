@@ -25,6 +25,7 @@ __contact__ = "automl.org"
 from collections import OrderedDict
 from itertools import product
 from io import StringIO
+import json
 
 import pyparsing
 
@@ -266,6 +267,7 @@ def read(pcs_string, debug=False):
             line = line[:pos]
 
         # Remove quotes and whitespaces at beginning and end
+        ori_line = line
         line = line.replace('"', "").replace("'", "")
         line = line.strip()
         if "|" in line:
@@ -323,16 +325,28 @@ def read(pcs_string, debug=False):
             if "categorical" in line:
                 param_list = pp_cat_param.parseString(line)
                 name = param_list[0]
-                choices = [choice for choice in param_list[3:-4:2]]
-                default_value = param_list[-2]
+                #choices = [choice for choice in param_list[3:-4:2]]
+                ori_line_segs = ori_line.split('{')
+                choices_str = '[' + ori_line_segs[1].split('}')[0] + ']'
+                choices = json.loads(choices_str)
+                #default_value = param_list[-2]
+                ori_line_segs = ori_line.split('[')
+                default_str = ori_line_segs[-1].split(']')[0]
+                default_value = json.loads(default_str)
                 param = create["categorical"](name=name, choices=choices, default_value=default_value)
                 cat_ct += 1
 
             elif "ordinal" in line:
                 param_list = pp_ord_param.parseString(line)
                 name = param_list[0]
-                sequence = [seq for seq in param_list[3:-4:2]]
-                default_value = param_list[-2]
+                #sequence = [seq for seq in param_list[3:-4:2]]
+                ori_line_segs = ori_line.split('{')
+                sequence_str = '[' + ori_line_segs[1].split('}')[0] + ']'
+                sequence = json.loads(sequence_str)
+                #default_value = param_list[-2]
+                ori_line_segs = ori_line.split('[')
+                default_str = ori_line_segs[-1].split(']')[0]
+                default_value = json.loads(default_str)
                 param = create["ordinal"](name=name, sequence=sequence, default_value=default_value)
                 ord_ct += 1
 

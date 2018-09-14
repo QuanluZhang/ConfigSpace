@@ -25,6 +25,7 @@ from collections import OrderedDict
 from itertools import product
 from io import StringIO
 import sys
+import json
 
 import pyparsing
 
@@ -178,6 +179,7 @@ def read(pcs_string, debug=False):
             line = line[:pos]
 
         # Remove quotes and whitespaces at beginning and end
+        ori_line = line
         line = line.replace('"', "").replace("'", "")
         line = line.strip()
 
@@ -225,8 +227,14 @@ def read(pcs_string, debug=False):
         try:
             param_list = pp_cat_param.parseString(line)
             name = param_list[0]
-            choices = [c for c in param_list[2:-4:2]]
-            default_value = param_list[-2]
+            #choices = [c for c in param_list[2:-4:2]]
+            ori_line_segs = ori_line.split('{')
+            choices_str = '[' + ori_line_segs[1].split('}')[0] + ']'
+            choices = json.loads(choices_str)
+            #default_value = param_list[-2]
+            ori_line_segs = ori_line.split('[')
+            default_str = ori_line_segs[-1].split(']')[0]
+            default_value = json.loads(default_str)
             param = create["categorical"](name=name, choices=choices,
                                           default_value=default_value)
             cat_ct += 1
