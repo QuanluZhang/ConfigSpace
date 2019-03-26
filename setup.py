@@ -54,7 +54,7 @@ with open("ConfigSpace/__version__.py") as fh:
 
 
 setup(
-    name='ConfigSpace',
+    name='ConfigSpaceForNNI',
     version=version,
     url='https://github.com/automl/ConfigSpace',
     description=desc,
