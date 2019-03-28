@@ -1,4 +1,4 @@
-# Copyright (c) 2014-2016, ConfigSpace developers
+# Copyright (c) 2014-2016, ConfigSpaceNNI developers
 # Matthias Feurer
 # Katharina Eggensperger
 # and others (see commit history).
@@ -29,10 +29,10 @@
 import os
 import unittest
 
-import ConfigSpace
-import ConfigSpace.util
-import ConfigSpace.read_and_write.pcs as pcs_parser
-import ConfigSpace.read_and_write.pcs_new as pcs_new_parser
+import ConfigSpaceNNI
+import ConfigSpaceNNI.util
+import ConfigSpaceNNI.read_and_write.pcs as pcs_parser
+import ConfigSpaceNNI.read_and_write.pcs_new as pcs_new_parser
 
 
 class ExampleSearchSpacesTest(unittest.TestCase):
@@ -51,7 +51,7 @@ def generate(configuration_space_path):
         default = cs.get_default_configuration()
         cs._check_configuration_rigorous(default)
         for i in range(10):
-            neighborhood = ConfigSpace.util.get_one_exchange_neighbourhood(
+            neighborhood = ConfigSpaceNNI.util.get_one_exchange_neighbourhood(
                 default, seed=i)
 
             for shuffle, n in enumerate(neighborhood):
@@ -67,7 +67,7 @@ def generate(configuration_space_path):
             for j, c in enumerate(configurations):
                 c.is_valid_configuration()
                 cs._check_configuration_rigorous(c)
-                neighborhood = ConfigSpace.util.get_one_exchange_neighbourhood(
+                neighborhood = ConfigSpaceNNI.util.get_one_exchange_neighbourhood(
                     c, seed=i)
 
                 for shuffle, n in enumerate(neighborhood):

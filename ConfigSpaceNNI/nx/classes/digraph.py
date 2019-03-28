@@ -8,10 +8,10 @@
 import collections
 from copy import deepcopy
 
-import ConfigSpace.nx
-from ConfigSpace.nx.classes.graph import Graph
-from ConfigSpace.nx.exception import NetworkXError
-# from ConfigSpace.nx import convert
+import ConfigSpaceNNI.nx
+from ConfigSpaceNNI.nx.classes.graph import Graph
+from ConfigSpaceNNI.nx.exception import NetworkXError
+# from ConfigSpaceNNI.nx import convert
 
 
 __author__ = """\n""".join(['Aric Hagberg (hagberg@lanl.gov)',

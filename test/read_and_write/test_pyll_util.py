@@ -1,4 +1,4 @@
-# Copyright (c) 2014-2016, ConfigSpace developers
+# Copyright (c) 2014-2016, ConfigSpaceNNI developers
 # Matthias Feurer
 # Katharina Eggensperger
 # and others (see commit history).
@@ -35,7 +35,7 @@
 #
 # import HPOlib.format_converter.configuration_space as configuration_space
 # import HPOlib.format_converter.pyll_parser as pyll_parser
-# from HPOlibConfigSpace.hyperparameters import CategoricalHyperparameter, \
+# from HPOlibConfigSpaceNNI.hyperparameters import CategoricalHyperparameter, \
 #     UniformFloatHyperparameter, UniformIntegerHyperparameter, Constant, \
 #     NormalFloatHyperparameter, NormalIntegerHyperparameter
 #

@@ -29,18 +29,18 @@ import json
 
 import pyparsing
 
-from ConfigSpace.configuration_space import ConfigurationSpace
-from ConfigSpace.hyperparameters import CategoricalHyperparameter, \
+from ConfigSpaceNNI.configuration_space import ConfigurationSpace
+from ConfigSpaceNNI.hyperparameters import CategoricalHyperparameter, \
     UniformIntegerHyperparameter, UniformFloatHyperparameter, \
     NumericalHyperparameter, IntegerHyperparameter, FloatHyperparameter, \
     NormalIntegerHyperparameter, NormalFloatHyperparameter, OrdinalHyperparameter,\
     Constant
-from ConfigSpace.conditions import EqualsCondition, NotEqualsCondition,\
+from ConfigSpaceNNI.conditions import EqualsCondition, NotEqualsCondition,\
     InCondition, AndConjunction, OrConjunction, ConditionComponent,\
     GreaterThanCondition, LessThanCondition
-# from ConfigSpace.forbidden import ForbiddenEqualsClause, \
+# from ConfigSpaceNNI.forbidden import ForbiddenEqualsClause, \
 #     ForbiddenAndConjunction, ForbiddenInClause, AbstractForbiddenComponent, MultipleValueForbiddenClause
-from ConfigSpace.forbidden import ForbiddenEqualsClause, \
+from ConfigSpaceNNI.forbidden import ForbiddenEqualsClause, \
     ForbiddenAndConjunction, ForbiddenInClause, AbstractForbiddenComponent, MultipleValueForbiddenClause
 
 # Build pyparsing expressions for params

@@ -1,4 +1,4 @@
-# # Copyright (c) 2014-2016, ConfigSpace developers
+# # Copyright (c) 2014-2016, ConfigSpaceNNI developers
 # # Matthias Feurer
 # # Katharina Eggensperger
 # # and others (see commit history).
@@ -29,9 +29,9 @@
 # from argparse import ArgumentParser, FileType
 # from string import upper
 #
-# from ConfigSpace.io import pb
-# from ConfigSpace.io import pyll
-# from ConfigSpace.io import pcs
+# from ConfigSpaceNNI.io import pb
+# from ConfigSpaceNNI.io import pyll
+# from ConfigSpaceNNI.io import pcs
 #
 #
 # __authors__ = ["Katharina Eggensperger", "Matthias Feurer"]

@@ -14,15 +14,15 @@ ctypedef np.float_t DTYPE_t
 
 from libc.stdlib cimport malloc, free
 
-from ConfigSpace.exceptions import ForbiddenValueError
-from ConfigSpace.forbidden import AbstractForbiddenComponent
+from ConfigSpaceNNI.exceptions import ForbiddenValueError
+from ConfigSpaceNNI.forbidden import AbstractForbiddenComponent
 
-from ConfigSpace.forbidden import AbstractForbiddenComponent
-from ConfigSpace.forbidden cimport AbstractForbiddenComponent
-from ConfigSpace.hyperparameters import Hyperparameter
-from ConfigSpace.hyperparameters cimport Hyperparameter
-from ConfigSpace.conditions import ConditionComponent
-from ConfigSpace.conditions cimport ConditionComponent
+from ConfigSpaceNNI.forbidden import AbstractForbiddenComponent
+from ConfigSpaceNNI.forbidden cimport AbstractForbiddenComponent
+from ConfigSpaceNNI.hyperparameters import Hyperparameter
+from ConfigSpaceNNI.hyperparameters cimport Hyperparameter
+from ConfigSpaceNNI.conditions import ConditionComponent
+from ConfigSpaceNNI.conditions cimport ConditionComponent
 
 
 cpdef int check_forbidden(list forbidden_clauses, np.ndarray vector) except 1:

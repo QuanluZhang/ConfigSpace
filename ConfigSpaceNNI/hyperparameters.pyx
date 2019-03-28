@@ -1,4 +1,4 @@
-# Copyright (c) 2014-2016, ConfigSpace developers
+# Copyright (c) 2014-2016, ConfigSpaceNNI developers
 # Matthias Feurer
 # Katharina Eggensperger
 # and others (see commit history).
@@ -1088,7 +1088,7 @@ cdef class CategoricalHyperparameter(Hyperparameter):
                          "condition must be a subclass of "
                          "NumericalHyperparameter or "
                          "OrdinalHyperparameter, but is "
-                         "<cdef class 'ConfigSpace.hyperparameters.CategoricalHyperparameter'>")
+                         "<cdef class 'ConfigSpaceNNI.hyperparameters.CategoricalHyperparameter'>")
 
 
 cdef class OrdinalHyperparameter(Hyperparameter):

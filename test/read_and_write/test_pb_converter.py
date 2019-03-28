@@ -1,4 +1,4 @@
-# Copyright (c) 2014-2016, ConfigSpace developers
+# Copyright (c) 2014-2016, ConfigSpaceNNI developers
 # Matthias Feurer
 # Katharina Eggensperger
 # and others (see commit history).
@@ -33,8 +33,8 @@
 #
 # import six
 #
-# import HPOlibConfigSpace.converters.pb_parser as pb_parser
-# from HPOlibConfigSpace.hyperparameters import UniformFloatHyperparameter, \
+# import HPOlibConfigSpaceNNI.converters.pb_parser as pb_parser
+# from HPOlibConfigSpaceNNI.hyperparameters import UniformFloatHyperparameter, \
 #     UniformIntegerHyperparameter, CategoricalHyperparameter
 #
 # float_a = UniformFloatHyperparameter("float_a", -5.3, 10.5)

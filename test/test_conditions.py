@@ -1,4 +1,4 @@
-# Copyright (c) 2014-2016, ConfigSpace developers
+# Copyright (c) 2014-2016, ConfigSpaceNNI developers
 # Matthias Feurer
 # Katharina Eggensperger
 # and others (see commit history).
@@ -30,11 +30,11 @@ import unittest
 import numpy as np
 import warnings
 
-from ConfigSpace.hyperparameters import Constant, \
+from ConfigSpaceNNI.hyperparameters import Constant, \
     UniformFloatHyperparameter, NormalFloatHyperparameter, \
     UniformIntegerHyperparameter, NormalIntegerHyperparameter, \
     CategoricalHyperparameter, OrdinalHyperparameter
-from ConfigSpace.conditions import EqualsCondition, NotEqualsCondition, \
+from ConfigSpaceNNI.conditions import EqualsCondition, NotEqualsCondition, \
     InCondition, AndConjunction, OrConjunction, LessThanCondition, \
     GreaterThanCondition
 
@@ -165,13 +165,13 @@ class TestConditions(unittest.TestCase):
                                             "condition must be a subclass of "
                                             "NumericalHyperparameter or "
                                             "OrdinalHyperparameter, but is "
-                                            "<cdef class 'ConfigSpace.hyperparameters.CategoricalHyperparameter'>",
+                                            "<cdef class 'ConfigSpaceNNI.hyperparameters.CategoricalHyperparameter'>",
                                 GreaterThanCondition, child, hp4, 1)
         self.assertRaisesRegexp(ValueError, "Parent hyperparameter in a > or < "
                                             "condition must be a subclass of "
                                             "NumericalHyperparameter or "
                                             "OrdinalHyperparameter, but is "
-                                            "<cdef class 'ConfigSpace.hyperparameters.CategoricalHyperparameter'>",
+                                            "<cdef class 'ConfigSpaceNNI.hyperparameters.CategoricalHyperparameter'>",
                                 LessThanCondition, child, hp4, 1)
 
         hp5 = OrdinalHyperparameter("ord", ['cold', 'luke warm', 'warm', 'hot'])

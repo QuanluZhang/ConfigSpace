@@ -1,4 +1,4 @@
-# Copyright (c) 2014-2016, ConfigSpace developers
+# Copyright (c) 2014-2016, ConfigSpaceNNI developers
 # Matthias Feurer
 # Katharina Eggensperger
 # and others (see commit history).
@@ -31,15 +31,15 @@ import os
 import tempfile
 import unittest
 
-from ConfigSpace.configuration_space import ConfigurationSpace
-import ConfigSpace.read_and_write.pcs as pcs
-import ConfigSpace.read_and_write.pcs_new as pcs_new
-from ConfigSpace.hyperparameters import CategoricalHyperparameter, \
+from ConfigSpaceNNI.configuration_space import ConfigurationSpace
+import ConfigSpaceNNI.read_and_write.pcs as pcs
+import ConfigSpaceNNI.read_and_write.pcs_new as pcs_new
+from ConfigSpaceNNI.hyperparameters import CategoricalHyperparameter, \
     UniformIntegerHyperparameter, UniformFloatHyperparameter, OrdinalHyperparameter
-from ConfigSpace.conditions import EqualsCondition, InCondition, \
+from ConfigSpaceNNI.conditions import EqualsCondition, InCondition, \
     AndConjunction, OrConjunction, NotEqualsCondition, \
     GreaterThanCondition
-from ConfigSpace.forbidden import ForbiddenInClause, ForbiddenAndConjunction
+from ConfigSpaceNNI.forbidden import ForbiddenInClause, ForbiddenAndConjunction
 
 # More complex search space
 classifier = CategoricalHyperparameter("classifier", ["svm", "nn"])
@@ -159,7 +159,7 @@ class TestPCSConverter(unittest.TestCase):
         self.assertRaisesRegexp(TypeError, "pcs_parser.write expects an "
                                 "instance of "
                                 "<class "
-                                "'ConfigSpace.configuration_"
+                                "'ConfigSpaceNNI.configuration_"
                                 "space.ConfigurationSpace'>, you provided "
                                 "'<(type|class) 'dict'>'", pcs.write, sp)
 
@@ -283,7 +283,7 @@ class TestPCSConverter(unittest.TestCase):
         self.assertRaisesRegexp(TypeError, "pcs_parser.write expects an "
                                 "instance of "
                                 "<class "
-                                "'ConfigSpace.configuration_"
+                                "'ConfigSpaceNNI.configuration_"
                                 "space.ConfigurationSpace'>, you provided "
                                 "'<(type|class) 'dict'>'", pcs_new.write, sp)
                                 

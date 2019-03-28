@@ -5,9 +5,9 @@ from collections import OrderedDict
 import json
 from typing import Dict
 
-from ConfigSpace import __version__
-from ConfigSpace.configuration_space import ConfigurationSpace
-from ConfigSpace.hyperparameters import (
+from ConfigSpaceNNI import __version__
+from ConfigSpaceNNI.configuration_space import ConfigurationSpace
+from ConfigSpaceNNI.hyperparameters import (
     Hyperparameter,
     CategoricalHyperparameter,
     UniformIntegerHyperparameter,
@@ -18,7 +18,7 @@ from ConfigSpace.hyperparameters import (
     Constant,
     UnParametrizedHyperparameter,
 )
-from ConfigSpace.conditions import (
+from ConfigSpaceNNI.conditions import (
     AbstractCondition,
     EqualsCondition,
     NotEqualsCondition,
@@ -28,7 +28,7 @@ from ConfigSpace.conditions import (
     GreaterThanCondition,
     LessThanCondition,
 )
-from ConfigSpace.forbidden import (
+from ConfigSpaceNNI.forbidden import (
     ForbiddenEqualsClause,
     ForbiddenAndConjunction,
     AbstractForbiddenConjunction,

@@ -1,4 +1,4 @@
-# Copyright (c) 2014-2016, ConfigSpace developers
+# Copyright (c) 2014-2016, ConfigSpaceNNI developers
 # Matthias Feurer
 # Katharina Eggensperger
 # and others (see commit history).
@@ -34,13 +34,13 @@ import unittest
 
 import numpy as np
 
-from ConfigSpace import ConfigurationSpace, \
+from ConfigSpaceNNI import ConfigurationSpace, \
     Configuration, CategoricalHyperparameter, UniformIntegerHyperparameter, \
     Constant, EqualsCondition, NotEqualsCondition, InCondition, \
     AndConjunction, OrConjunction, ForbiddenEqualsClause, \
     ForbiddenAndConjunction, UniformFloatHyperparameter
-from ConfigSpace.hyperparameters import NormalFloatHyperparameter
-from ConfigSpace.exceptions import ForbiddenValueError
+from ConfigSpaceNNI.hyperparameters import NormalFloatHyperparameter
+from ConfigSpaceNNI.exceptions import ForbiddenValueError
 
 
 def byteify(input):

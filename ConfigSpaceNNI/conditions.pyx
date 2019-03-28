@@ -1,4 +1,4 @@
-# Copyright (c) 2014-2016, ConfigSpace developers
+# Copyright (c) 2014-2016, ConfigSpaceNNI developers
 # Matthias Feurer
 # Katharina Eggensperger
 # and others (see commit history).
@@ -48,8 +48,8 @@ cimport numpy as np
 
 import io
 from functools import reduce
-from ConfigSpace.hyperparameters import NumericalHyperparameter, OrdinalHyperparameter
-from ConfigSpace.hyperparameters cimport Hyperparameter
+from ConfigSpaceNNI.hyperparameters import NumericalHyperparameter, OrdinalHyperparameter
+from ConfigSpaceNNI.hyperparameters cimport Hyperparameter
 
 
 cdef class ConditionComponent(object):
@@ -103,10 +103,10 @@ cdef class AbstractCondition(ConditionComponent):
     def __init__(self, child: Hyperparameter, parent: Hyperparameter) -> None:
         if not isinstance(child, Hyperparameter):
             raise ValueError("Argument 'child' is not an instance of "
-                             "HPOlibConfigSpace.hyperparameter.Hyperparameter.")
+                             "HPOlibConfigSpaceNNI.hyperparameter.Hyperparameter.")
         if not isinstance(parent, Hyperparameter):
             raise ValueError("Argument 'parent' is not an instance of "
-                             "HPOlibConfigSpace.hyperparameter.Hyperparameter.")
+                             "HPOlibConfigSpaceNNI.hyperparameter.Hyperparameter.")
         if child == parent:
             raise ValueError("The child and parent hyperparameter must be "
                              "different hyperparameters.")
