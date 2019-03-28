@@ -1,4 +1,4 @@
-# Copyright (c) 2014-2016, ConfigSpace developers
+# Copyright (c) 2014-2016, ConfigSpaceNNI developers
 # Matthias Feurer
 # Katharina Eggensperger
 # and others (see commit history).
@@ -30,8 +30,8 @@ import copy
 import numpy as np
 cimport numpy as np
 import io
-from ConfigSpace.hyperparameters import Hyperparameter
-from ConfigSpace.hyperparameters cimport Hyperparameter
+from ConfigSpaceNNI.hyperparameters import Hyperparameter
+from ConfigSpaceNNI.hyperparameters cimport Hyperparameter
 from typing import List, Dict, Any, Union
 
 from libc.stdlib cimport malloc, free

@@ -1,4 +1,4 @@
-# Copyright (c) 2014-2016, ConfigSpace developers
+# Copyright (c) 2014-2016, ConfigSpaceNNI developers
 # Matthias Feurer
 # Katharina Eggensperger
 # and others (see commit history).
@@ -31,13 +31,13 @@ import unittest
 
 import numpy as np
 
-from ConfigSpace import Configuration, ConfigurationSpace, UniformIntegerHyperparameter, \
+from ConfigSpaceNNI import Configuration, ConfigurationSpace, UniformIntegerHyperparameter, \
     UniformFloatHyperparameter, CategoricalHyperparameter, Constant, \
     EqualsCondition, AndConjunction, OrConjunction
-from ConfigSpace.read_and_write.pcs import read
-from ConfigSpace.util import impute_inactive_values, get_random_neighbor, \
+from ConfigSpaceNNI.read_and_write.pcs import read
+from ConfigSpaceNNI.util import impute_inactive_values, get_random_neighbor, \
     get_one_exchange_neighbourhood, deactivate_inactive_hyperparameters
-import ConfigSpace.c_util
+import ConfigSpaceNNI.c_util
 
 
 class UtilTest(unittest.TestCase):
@@ -256,7 +256,7 @@ class UtilTest(unittest.TestCase):
         index = diamond.get_idx_by_hyperparameter_name(hp_name)
         neighbor_value = 1
 
-        new_array = ConfigSpace.c_util.change_hp_value(
+        new_array = ConfigSpaceNNI.c_util.change_hp_value(
             diamond,
             config.get_array(),
             hp_name,
@@ -284,7 +284,7 @@ class UtilTest(unittest.TestCase):
         index = diamond.get_idx_by_hyperparameter_name(hp_name)
         neighbor_value = 1
 
-        new_array = ConfigSpace.c_util.change_hp_value(
+        new_array = ConfigSpaceNNI.c_util.change_hp_value(
             diamond,
             config.get_array(),
             hp_name,

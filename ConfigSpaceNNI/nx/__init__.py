@@ -7,7 +7,7 @@
 #
 # Add platform dependent shared library path to sys.path
 #
-# Modified by Matthias Feurer for the package HPOlibConfigSpace
+# Modified by Matthias Feurer for the package HPOlibConfigSpaceNNI
 
 from __future__ import absolute_import
 
@@ -18,7 +18,7 @@ if sys.version_info[:2] < (2, 6):
 del sys
 
 # Release data
-from ConfigSpace.nx.release import authors, license, date, version
+from ConfigSpaceNNI.nx.release import authors, license, date, version
 
 __author__   = '%s <%s>\n%s <%s>\n%s <%s>' % \
               ( authors['Hagberg'] + authors['Schult'] + \
@@ -29,14 +29,14 @@ __date__ = date
 __version__ = version
 
 #These are import orderwise
-from ConfigSpace.nx import *
+from ConfigSpaceNNI.nx import *
 
-import ConfigSpace.nx.exception
-from ConfigSpace.nx.exception import *
+import ConfigSpaceNNI.nx.exception
+from ConfigSpaceNNI.nx.exception import *
 
-# import ConfigSpace.nx.classes
-from ConfigSpace.nx.classes import *
+# import ConfigSpaceNNI.nx.classes
+from ConfigSpaceNNI.nx.classes import *
 
-import ConfigSpace.nx.algorithms
-from ConfigSpace.nx.algorithms import *
+import ConfigSpaceNNI.nx.algorithms
+from ConfigSpaceNNI.nx.algorithms import *
 

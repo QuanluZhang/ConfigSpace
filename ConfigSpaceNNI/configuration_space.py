@@ -1,4 +1,4 @@
-# Copyright (c) 2014-2016, ConfigSpace developers
+# Copyright (c) 2014-2016, ConfigSpaceNNI developers
 # Matthias Feurer
 # Katharina Eggensperger
 # and others (see commit history).
@@ -33,15 +33,15 @@ from itertools import chain
 import numpy as np
 import io
 
-import ConfigSpace.nx
-from ConfigSpace.hyperparameters import Hyperparameter, Constant, FloatHyperparameter
-from ConfigSpace.conditions import ConditionComponent, \
+import ConfigSpaceNNI.nx
+from ConfigSpaceNNI.hyperparameters import Hyperparameter, Constant, FloatHyperparameter
+from ConfigSpaceNNI.conditions import ConditionComponent, \
     AbstractCondition, AbstractConjunction, EqualsCondition
-# from ConfigSpace.forbidden import AbstractForbiddenComponent
-from ConfigSpace.forbidden import AbstractForbiddenComponent
+# from ConfigSpaceNNI.forbidden import AbstractForbiddenComponent
+from ConfigSpaceNNI.forbidden import AbstractForbiddenComponent
 from typing import Union, List, Any, Dict, Iterable, Set, Tuple, Optional
-from ConfigSpace.exceptions import ForbiddenValueError
-import ConfigSpace.c_util
+from ConfigSpaceNNI.exceptions import ForbiddenValueError
+import ConfigSpaceNNI.c_util
 
 
 class ConfigurationSpace(object):
@@ -91,7 +91,7 @@ class ConfigurationSpace(object):
 
     def generate_all_continuous_from_bounds(self, bounds: List[List[Any]]) -> None:
         for i, (l, u) in enumerate(bounds):
-            hp = ConfigSpace.UniformFloatHyperparameter('x%d' % i, l, u)
+            hp = ConfigSpaceNNI.UniformFloatHyperparameter('x%d' % i, l, u)
             self.add_hyperparameter(hp)
 
     def add_hyperparameters(self, hyperparameters: List[Hyperparameter]) -> List[Hyperparameter]:
@@ -110,7 +110,7 @@ class ConfigurationSpace(object):
         for hyperparameter in hyperparameters:
             if not isinstance(hyperparameter, Hyperparameter):
                 raise TypeError("Hyperparameter '%s' is not an instance of "
-                                "ConfigSpace.hyperparameters.Hyperparameter." %
+                                "ConfigSpaceNNI.hyperparameters.Hyperparameter." %
                                 str(hyperparameter))
 
         for hyperparameter in hyperparameters:
@@ -127,14 +127,14 @@ class ConfigurationSpace(object):
 
         Parameters
         ----------
-        hyperparameter : :class:`HPOlibConfigSpace.hyperparameters.
+        hyperparameter : :class:`HPOlibConfigSpaceNNI.hyperparameters.
                 Hyperparameter`
             The hyperparameter to add.
         """
         if not isinstance(hyperparameter, Hyperparameter):
             raise TypeError("The method add_hyperparameter must be called "
                             "with an instance of "
-                            "ConfigSpace.hyperparameters.Hyperparameter.")
+                            "ConfigSpaceNNI.hyperparameters.Hyperparameter.")
 
         self._add_hyperparameter(hyperparameter)
         self._update_cache()
@@ -177,7 +177,7 @@ class ConfigurationSpace(object):
         if not isinstance(condition, ConditionComponent):
             raise TypeError("The method add_condition must be called "
                             "with an instance of "
-                            "ConfigSpace.condition.ConditionComponent.")
+                            "ConfigSpaceNNI.condition.ConditionComponent.")
 
         if isinstance(condition, AbstractCondition):
             self._check_edges(
@@ -217,7 +217,7 @@ class ConfigurationSpace(object):
         for condition in conditions:
             if not isinstance(condition, ConditionComponent):
                 raise TypeError("Condition '%s' is not an instance of "
-                                "ConfigSpace.condition.ConditionComponent." %
+                                "ConfigSpaceNNI.condition.ConditionComponent." %
                                 str(condition))
 
         edges = []
@@ -327,9 +327,9 @@ class ConfigurationSpace(object):
         for parent_node, child_node in edges:
             tmp_dag.add_edge(parent_node.name, child_node.name)
 
-        if not ConfigSpace.nx.is_directed_acyclic_graph(tmp_dag):
+        if not ConfigSpaceNNI.nx.is_directed_acyclic_graph(tmp_dag):
             cycles = list(
-                ConfigSpace.nx.simple_cycles(tmp_dag)
+                ConfigSpaceNNI.nx.simple_cycles(tmp_dag)
             )  # type: List[List[str]]
             for cycle in cycles:
                 cycle.sort()
@@ -437,8 +437,8 @@ class ConfigurationSpace(object):
             self._parents_of[hp_name] = self.get_parents_of(hp_name)
             self._children_of[hp_name] = self.get_children_of(hp_name)
 
-    def _create_tmp_dag(self) -> ConfigSpace.nx.DiGraph:
-        tmp_dag = ConfigSpace.nx.DiGraph()
+    def _create_tmp_dag(self) -> ConfigSpaceNNI.nx.DiGraph:
+        tmp_dag = ConfigSpaceNNI.nx.DiGraph()
         for hp_name in self._hyperparameters:
             tmp_dag.add_node(hp_name)
             tmp_dag.add_edge('__HPOlib_configuration_space_root__', hp_name)
@@ -461,7 +461,7 @@ class ConfigurationSpace(object):
         if not isinstance(clause, AbstractForbiddenComponent):
             raise TypeError("The method add_forbidden_clause must be called "
                             "with an instance of "
-                            "ConfigSpace.forbidden.AbstractForbiddenComponent.")
+                            "ConfigSpaceNNI.forbidden.AbstractForbiddenComponent.")
         clause.set_vector_idx(self._hyperparameter_idx)
         self.forbidden_clauses.append(clause)
         self._check_default_configuration()
@@ -472,7 +472,7 @@ class ConfigurationSpace(object):
             clause.set_vector_idx(self._hyperparameter_idx)
             if not isinstance(clause, AbstractForbiddenComponent):
                 raise TypeError("Forbidden '%s' is not an instance of "
-                                "ConfigSpace.forbidden.AbstractForbiddenComponent." %
+                                "ConfigSpaceNNI.forbidden.AbstractForbiddenComponent." %
                                 str(clause))
             self.forbidden_clauses.append(clause)
         self._check_default_configuration()
@@ -483,7 +483,7 @@ class ConfigurationSpace(object):
         if not isinstance(configuration_space, ConfigurationSpace):
             raise TypeError("The method add_configuration_space must be "
                             "called with an instance of "
-                            "HPOlibConfigSpace.configuration_space."
+                            "HPOlibConfigSpaceNNI.configuration_space."
                             "ConfigurationSpace.")
 
         new_parameters = []
@@ -746,7 +746,7 @@ class ConfigurationSpace(object):
             raise TypeError("The method check_configuration must be called "
                             "with an instance of %s. "
                             "Your input was of type %s"% (Configuration, type(configuration)))
-        ConfigSpace.c_util.check_configuration(
+        ConfigSpaceNNI.c_util.check_configuration(
             self, configuration.get_array(), False
         )
 
@@ -755,7 +755,7 @@ class ConfigurationSpace(object):
             raise TypeError("The method check_configuration must be called "
                             "with an instance of np.ndarray "
                             "Your input was of type %s" % (type(vector)))
-        ConfigSpace.c_util.check_configuration(self, vector, False)
+        ConfigSpaceNNI.c_util.check_configuration(self, vector, False)
 
     def get_active_hyperparameters(self, configuration: 'Configuration') -> Set:
         vector = configuration.get_array()
@@ -812,7 +812,7 @@ class ConfigurationSpace(object):
         self._check_forbidden(vector)
 
     def _check_forbidden(self, vector: np.ndarray) -> None:
-        ConfigSpace.c_util.check_forbidden(self.forbidden_clauses, vector)
+        ConfigSpaceNNI.c_util.check_forbidden(self.forbidden_clauses, vector)
         #for clause in self.forbidden_clauses:
         #    if clause.is_forbidden_vector(vector, strict=False):
         #        raise ForbiddenValueError("Given vector violates forbidden
@@ -925,7 +925,7 @@ class ConfigurationSpace(object):
                 try:
                     configuration = Configuration(
                         self,
-                        vector=ConfigSpace.c_util.correct_sampled_array(
+                        vector=ConfigSpaceNNI.c_util.correct_sampled_array(
                             vector[i].copy(),
                             _forbidden_clauses_unconditionals,
                             _forbidden_clauses_conditionals,
@@ -1057,7 +1057,7 @@ class Configuration(object):
                              'or vector.')
 
     def is_valid_configuration(self) -> None:
-        ConfigSpace.c_util.check_configuration(
+        ConfigSpaceNNI.c_util.check_configuration(
             self.configuration_space,
             self._vector,
             allow_inactive_with_values=self.allow_inactive_with_values
@@ -1098,14 +1098,14 @@ class Configuration(object):
                 "Illegal value '%s' for hyperparameter %s" % (str(value), key))
         idx = self.configuration_space.get_idx_by_hyperparameter_name(key)
         vector_value = param._inverse_transform(value)
-        new_array = ConfigSpace.c_util.change_hp_value(
+        new_array = ConfigSpaceNNI.c_util.change_hp_value(
             self.configuration_space,
             self.get_array().copy(),
             param.name,
             vector_value,
             idx
         )
-        ConfigSpace.c_util.check_configuration(
+        ConfigSpaceNNI.c_util.check_configuration(
             self.configuration_space,
             new_array,
             False

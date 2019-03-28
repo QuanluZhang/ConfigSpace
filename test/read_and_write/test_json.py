@@ -2,9 +2,9 @@ import os
 import re
 import unittest
 
-from ConfigSpace.read_and_write.json import read, write
-from ConfigSpace.read_and_write.pcs import read as read_pcs
-from ConfigSpace.read_and_write.pcs_new import read as read_pcs_new
+from ConfigSpaceNNI.read_and_write.json import read, write
+from ConfigSpaceNNI.read_and_write.pcs import read as read_pcs
+from ConfigSpaceNNI.read_and_write.pcs_new import read as read_pcs_new
 
 
 class TestJson(unittest.TestCase):

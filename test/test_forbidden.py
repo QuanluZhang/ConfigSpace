@@ -1,4 +1,4 @@
-# Copyright (c) 2014-2016, ConfigSpace developers
+# Copyright (c) 2014-2016, ConfigSpaceNNI developers
 # Matthias Feurer
 # Katharina Eggensperger
 # and others (see commit history).
@@ -32,12 +32,12 @@ import warnings
 
 import numpy as np
 
-from ConfigSpace.hyperparameters import \
+from ConfigSpaceNNI.hyperparameters import \
     UniformIntegerHyperparameter, CategoricalHyperparameter
 
-# from ConfigSpace.forbidden import ForbiddenEqualsClause, \
+# from ConfigSpaceNNI.forbidden import ForbiddenEqualsClause, \
 #     ForbiddenInClause, ForbiddenAndConjunction
-from ConfigSpace.forbidden import ForbiddenEqualsClause, \
+from ConfigSpaceNNI.forbidden import ForbiddenEqualsClause, \
     ForbiddenInClause, ForbiddenAndConjunction
 
 
@@ -51,7 +51,7 @@ class TestForbidden(unittest.TestCase):
 
         self.assertRaisesRegexp(
             TypeError,
-            "Argument 'hyperparameter' has incorrect type \(expected ConfigSpace.hyperparameters.Hyperparameter, got str\)",
+            "Argument 'hyperparameter' has incorrect type \(expected ConfigSpaceNNI.hyperparameters.Hyperparameter, got str\)",
             ForbiddenEqualsClause, "HP1", 1,
         )
 
@@ -119,7 +119,7 @@ class TestForbidden(unittest.TestCase):
 
         self.assertRaisesRegexp(
             TypeError,
-            "Argument 'hyperparameter' has incorrect type \(expected ConfigSpace.hyperparameters.Hyperparameter, got str\)",
+            "Argument 'hyperparameter' has incorrect type \(expected ConfigSpaceNNI.hyperparameters.Hyperparameter, got str\)",
             ForbiddenInClause, "HP1", 1,
         )
 

@@ -1,4 +1,4 @@
-# Copyright (c) 2014-2016, ConfigSpace developers
+# Copyright (c) 2014-2016, ConfigSpaceNNI developers
 # Matthias Feurer
 # Katharina Eggensperger
 # and others (see commit history).
@@ -26,18 +26,18 @@
 # (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 # SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-from ConfigSpace.__version__ import __version__
+from ConfigSpaceNNI.__version__ import __version__
 __authors__ = ["Matthias Feurer", "Katharina Eggensperger",
                "Jost Tobias Springenberg", "Marius Lindauer"]
 
-from ConfigSpace.configuration_space import Configuration, \
+from ConfigSpaceNNI.configuration_space import Configuration, \
     ConfigurationSpace
-from ConfigSpace.hyperparameters import CategoricalHyperparameter, \
+from ConfigSpaceNNI.hyperparameters import CategoricalHyperparameter, \
     UniformFloatHyperparameter, UniformIntegerHyperparameter, Constant, \
     UnParametrizedHyperparameter, OrdinalHyperparameter
-from ConfigSpace.conditions import AndConjunction, OrConjunction, \
+from ConfigSpaceNNI.conditions import AndConjunction, OrConjunction, \
     EqualsCondition, NotEqualsCondition, InCondition, GreaterThanCondition, LessThanCondition
-# from ConfigSpace.forbidden import ForbiddenAndConjunction, \
+# from ConfigSpaceNNI.forbidden import ForbiddenAndConjunction, \
 #     ForbiddenEqualsClause, ForbiddenInClause
-from ConfigSpace.forbidden import ForbiddenAndConjunction, \
+from ConfigSpaceNNI.forbidden import ForbiddenAndConjunction, \
     ForbiddenEqualsClause, ForbiddenInClause

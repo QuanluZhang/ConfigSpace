@@ -1,4 +1,4 @@
-# /home/feurerm/projects/ConfigSpace/test/test_searchspaces/auto-sklearn_2017_11_17.pcs
+# /home/feurerm/projects/ConfigSpaceNNI/test/test_searchspaces/auto-sklearn_2017_11_17.pcs
 # Average time sampling 100 configurations 0.0115247011185
 # Average time retrieving a nearest neighbor 0.00251974105835
 # Average time checking one configuration 0.000194481347553
@@ -8,9 +8,9 @@ import time
 
 import numpy as np
 
-import ConfigSpace
-import ConfigSpace.util
-import ConfigSpace.read_and_write.pcs as pcs_parser
+import ConfigSpaceNNI
+import ConfigSpaceNNI.util
+import ConfigSpaceNNI.read_and_write.pcs as pcs_parser
 
 
 n_configs = 100
@@ -42,7 +42,7 @@ def run_test(configuration_space_path):
             #c.is_valid_configuration()
 
             if i == 0:
-                neighborhood = ConfigSpace.util.get_one_exchange_neighbourhood(
+                neighborhood = ConfigSpaceNNI.util.get_one_exchange_neighbourhood(
                     c, seed=i*j)
 
                 start_time = time.time()

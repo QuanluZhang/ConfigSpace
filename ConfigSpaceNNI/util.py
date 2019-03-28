@@ -1,5 +1,5 @@
 # cython: profile=True
-# Copyright (c) 2014-2016, ConfigSpace developers
+# Copyright (c) 2014-2016, ConfigSpaceNNI developers
 # Matthias Feurer
 # Katharina Eggensperger
 # and others (see commit history).
@@ -32,12 +32,12 @@ import copy
 from typing import Union, List, Dict, Generator
 
 import numpy as np  # type: ignore
-from ConfigSpace import Configuration, ConfigurationSpace
-from ConfigSpace.exceptions import ForbiddenValueError
-from ConfigSpace.hyperparameters import CategoricalHyperparameter, \
+from ConfigSpaceNNI import Configuration, ConfigurationSpace
+from ConfigSpaceNNI.exceptions import ForbiddenValueError
+from ConfigSpaceNNI.hyperparameters import CategoricalHyperparameter, \
     UniformFloatHyperparameter, UniformIntegerHyperparameter, Constant, \
     OrdinalHyperparameter, Hyperparameter
-import ConfigSpace.c_util
+import ConfigSpaceNNI.c_util
 
 
 def impute_inactive_values(configuration: Configuration, strategy: Union[str, float]='default') -> Configuration:
@@ -103,7 +103,7 @@ def get_one_exchange_neighbourhood(
     }
 
     finite_neighbors_stack = {}  # type: Dict
-    configuration_space = configuration.configuration_space  # type: ConfigSpace
+    configuration_space = configuration.configuration_space  # type: ConfigSpaceNNI
 
     while len(hyperparameters_used) < number_of_usable_hyperparameters:
         index = int(random.randint(hyperparameters_list_length))
@@ -155,7 +155,7 @@ def get_one_exchange_neighbourhood(
 
                 # Check all newly obtained neigbors
                 new_array = array.copy()
-                new_array = ConfigSpace.c_util.change_hp_value(
+                new_array = ConfigSpaceNNI.c_util.change_hp_value(
                     configuration_space=configuration_space,
                     configuration_array=new_array,
                     hp_name=hp_name,
@@ -324,7 +324,7 @@ def deactivate_inactive_hyperparameters(
 def fix_types(configuration: dict,
               configuration_space: ConfigurationSpace):
     '''
-        iterates over all hyperparameters in the ConfigSpace
+        iterates over all hyperparameters in the ConfigSpaceNNI
         and fixes the types of the parameter values in configuration.
     
         Arguments

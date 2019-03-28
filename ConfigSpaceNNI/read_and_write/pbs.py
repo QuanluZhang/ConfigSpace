@@ -26,9 +26,9 @@
 # from google.protobuf import text_format
 # import numpy as np
 #
-# from HPOlibConfigSpace.converters.spearmint_april2013_mod_spearmint_pb2 import Experiment, PYTHON
-# import HPOlibConfigSpace.configuration_space as configuration_space
-# from HPOlibConfigSpace.hyperparameters import UniformFloatHyperparameter, \
+# from HPOlibConfigSpaceNNI.converters.spearmint_april2013_mod_spearmint_pb2 import Experiment, PYTHON
+# import HPOlibConfigSpaceNNI.configuration_space as configuration_space
+# from HPOlibConfigSpaceNNI.hyperparameters import UniformFloatHyperparameter, \
 #     UniformIntegerHyperparameter, CategoricalHyperparameter
 #
 #

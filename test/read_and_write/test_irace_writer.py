@@ -1,4 +1,4 @@
-# Copyright (c) 2014-2017, ConfigSpace developers
+# Copyright (c) 2014-2017, ConfigSpaceNNI developers
 # Matthias Feurer
 # Katharina Eggensperger
 # Mohsin Ali
@@ -29,19 +29,19 @@
 
 import unittest
 
-from ConfigSpace.configuration_space import ConfigurationSpace
-import ConfigSpace.read_and_write.irace as irace
+from ConfigSpaceNNI.configuration_space import ConfigurationSpace
+import ConfigSpaceNNI.read_and_write.irace as irace
 
-from ConfigSpace.hyperparameters import CategoricalHyperparameter, \
+from ConfigSpaceNNI.hyperparameters import CategoricalHyperparameter, \
     UniformIntegerHyperparameter, UniformFloatHyperparameter, \
     OrdinalHyperparameter
-from ConfigSpace.conditions import EqualsCondition, InCondition, \
+from ConfigSpaceNNI.conditions import EqualsCondition, InCondition, \
     AndConjunction, OrConjunction
-from ConfigSpace.forbidden import ForbiddenInClause, ForbiddenEqualsClause, \
+from ConfigSpaceNNI.forbidden import ForbiddenInClause, ForbiddenEqualsClause, \
     ForbiddenAndConjunction
 
 
-# Copyright (c) 2014-2016, ConfigSpace developers
+# Copyright (c) 2014-2016, ConfigSpaceNNI developers
 # Matthias Feurer
 # Katharina Eggensperger
 # and others (see commit history).
@@ -82,7 +82,7 @@ class TestIraceWriter(unittest.TestCase):
         self.assertRaisesRegexp(TypeError, "irace.write expects an "
                                 "instance of "
                                 "<class "
-                                "'ConfigSpace.configuration_"
+                                "'ConfigSpaceNNI.configuration_"
                                 "space.ConfigurationSpace'>, you provided "
                                 "'<(type|class) 'dict'>'", irace.write, sp)
 

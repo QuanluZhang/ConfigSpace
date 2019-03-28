@@ -19,28 +19,28 @@ compiler_directives = {
 }
 
 extensions = [
-    Extension('ConfigSpace.hyperparameters',
-               sources=['ConfigSpace/hyperparameters.pyx',],
+    Extension('ConfigSpaceNNI.hyperparameters',
+               sources=['ConfigSpaceNNI/hyperparameters.pyx',],
                include_dirs=[np.get_include()],
                compiler_directives=compiler_directives),
-    Extension('ConfigSpace.forbidden',
-               sources=['ConfigSpace/forbidden.pyx'],
+    Extension('ConfigSpaceNNI.forbidden',
+               sources=['ConfigSpaceNNI/forbidden.pyx'],
                include_dirs=[np.get_include()],
                compiler_directives=compiler_directives),
-    Extension('ConfigSpace.conditions',
-               sources=['ConfigSpace/conditions.pyx'],
+    Extension('ConfigSpaceNNI.conditions',
+               sources=['ConfigSpaceNNI/conditions.pyx'],
                include_dirs=[np.get_include()],
                compiler_directives=compiler_directives),
-    Extension('ConfigSpace.c_util',
-               sources=['ConfigSpace/c_util.pyx'],
+    Extension('ConfigSpaceNNI.c_util',
+               sources=['ConfigSpaceNNI/c_util.pyx'],
                include_dirs=[np.get_include()],
                compiler_directives=compiler_directives),
-    Extension('ConfigSpace.util',
-               sources=['ConfigSpace/util.py'],
+    Extension('ConfigSpaceNNI.util',
+               sources=['ConfigSpaceNNI/util.py'],
                include_dirs=[np.get_include()],
                compiler_directives=compiler_directives),
-    Extension('ConfigSpace.configuration_space',
-               sources=['ConfigSpace/configuration_space.py'],
+    Extension('ConfigSpaceNNI.configuration_space',
+               sources=['ConfigSpaceNNI/configuration_space.py'],
                include_dirs=[np.get_include()],
                compiler_directives=compiler_directives),
 ]
@@ -49,14 +49,14 @@ def read(fname):
     return open(os.path.join(os.path.dirname(__file__), fname)).read()
 
 
-with open("ConfigSpace/__version__.py") as fh:
+with open("ConfigSpaceNNI/__version__.py") as fh:
     version = fh.readlines()[-1].split()[-1].strip("\"'")
 
 
 setup(
     name='ConfigSpaceNNI',
     version=version,
-    url='https://github.com/automl/ConfigSpace',
+    url='https://github.com/automl/ConfigSpaceNNI',
     description=desc,
     ext_modules=extensions,
     long_description=read("README.md"),

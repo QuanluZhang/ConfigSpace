@@ -1,2 +1,2 @@
-from ConfigSpace.nx.classes.graph import Graph
-from ConfigSpace.nx.classes.digraph import DiGraph
+from ConfigSpaceNNI.nx.classes.graph import Graph
+from ConfigSpaceNNI.nx.classes.digraph import DiGraph
