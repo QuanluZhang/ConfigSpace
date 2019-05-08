@@ -81,7 +81,7 @@ def get_one_exchange_neighbourhood(
         seed: int,
         num_neighbors: int=4,
         stdev: float=0.2,
-    ) -> Generator[Configuration]:
+    ) -> Generator[Configuration, None, None]:
     """Return all configurations in a one-exchange neighborhood.
 
     The method is implemented as defined by:
