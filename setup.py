@@ -76,6 +76,7 @@ setup(
     test_suite="nose.collector",
     # https://stackoverflow.com/questions/24923003/organizing-a-package-with-cython
     setup_requires=[
+        'numpy',
         'Cython',
     ],
     install_requires=[
