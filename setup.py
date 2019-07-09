@@ -13,9 +13,6 @@ class build_ext(_build_ext):
         import numpy
         self.include_dirs.append(numpy.get_include())
 
-def get_numpy_include():
-    import numpy
-    return numpy.get_include()
 
 # Read http://peterdowns.com/posts/first-time-with-pypi.html to figure out how
 # to publish the package on PyPI
@@ -35,27 +32,21 @@ compiler_directives = {
 extensions = [
     Extension('ConfigSpaceNNI.hyperparameters',
                sources=['ConfigSpaceNNI/hyperparameters.pyx',],
-               include_dirs=[get_numpy_include()],
                compiler_directives=compiler_directives),
     Extension('ConfigSpaceNNI.forbidden',
                sources=['ConfigSpaceNNI/forbidden.pyx'],
-               include_dirs=[get_numpy_include()],
                compiler_directives=compiler_directives),
     Extension('ConfigSpaceNNI.conditions',
                sources=['ConfigSpaceNNI/conditions.pyx'],
-               include_dirs=[get_numpy_include()],
                compiler_directives=compiler_directives),
     Extension('ConfigSpaceNNI.c_util',
                sources=['ConfigSpaceNNI/c_util.pyx'],
-               include_dirs=[get_numpy_include()],
                compiler_directives=compiler_directives),
     Extension('ConfigSpaceNNI.util',
                sources=['ConfigSpaceNNI/util.py'],
-               include_dirs=[get_numpy_include()],
                compiler_directives=compiler_directives),
     Extension('ConfigSpaceNNI.configuration_space',
                sources=['ConfigSpaceNNI/configuration_space.py'],
-               include_dirs=[get_numpy_include()],
                compiler_directives=compiler_directives),
 ]
 
@@ -73,7 +64,6 @@ setup(
     version=version,
     url='https://github.com/automl/ConfigSpaceNNI',
     description=desc,
-    ext_modules=extensions,
     long_description=read("README.md"),
     license='BSD 3-clause',
     platforms=['Linux'],
@@ -94,6 +84,7 @@ setup(
         'typing',
         'Cython',
     ],
+    ext_modules=extensions,
     keywords=keywords,
     packages=find_packages(),
     python_requires='>=3.4.*',
