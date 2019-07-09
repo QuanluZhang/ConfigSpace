@@ -7,8 +7,8 @@ class get_numpy_include(object):
     """Returns Numpy's include path with lazy import.
     """
     def __str__(self):
-        import numpy
-        return numpy.get_include()
+        import numpy as np
+        return np.get_include()
 
 # Read http://peterdowns.com/posts/first-time-with-pypi.html to figure out how
 # to publish the package on PyPI
