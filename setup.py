@@ -1,7 +1,14 @@
 from setuptools import setup, find_packages
 from setuptools.extension import Extension
 import os
-import numpy as np
+
+
+class get_numpy_include(object):
+    """Returns Numpy's include path with lazy import.
+    """
+    def __str__(self):
+        import numpy
+        return numpy.get_include()
 
 # Read http://peterdowns.com/posts/first-time-with-pypi.html to figure out how
 # to publish the package on PyPI
@@ -21,27 +28,27 @@ compiler_directives = {
 extensions = [
     Extension('ConfigSpaceNNI.hyperparameters',
                sources=['ConfigSpaceNNI/hyperparameters.pyx',],
-               include_dirs=[np.get_include()],
+               include_dirs=[get_numpy_include()],
                compiler_directives=compiler_directives),
     Extension('ConfigSpaceNNI.forbidden',
                sources=['ConfigSpaceNNI/forbidden.pyx'],
-               include_dirs=[np.get_include()],
+               include_dirs=[get_numpy_include()],
                compiler_directives=compiler_directives),
     Extension('ConfigSpaceNNI.conditions',
                sources=['ConfigSpaceNNI/conditions.pyx'],
-               include_dirs=[np.get_include()],
+               include_dirs=[get_numpy_include()],
                compiler_directives=compiler_directives),
     Extension('ConfigSpaceNNI.c_util',
                sources=['ConfigSpaceNNI/c_util.pyx'],
-               include_dirs=[np.get_include()],
+               include_dirs=[get_numpy_include()],
                compiler_directives=compiler_directives),
     Extension('ConfigSpaceNNI.util',
                sources=['ConfigSpaceNNI/util.py'],
-               include_dirs=[np.get_include()],
+               include_dirs=[get_numpy_include()],
                compiler_directives=compiler_directives),
     Extension('ConfigSpaceNNI.configuration_space',
                sources=['ConfigSpaceNNI/configuration_space.py'],
-               include_dirs=[np.get_include()],
+               include_dirs=[get_numpy_include()],
                compiler_directives=compiler_directives),
 ]
 
